@@ -10,6 +10,8 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
+
+	"Pomodoro/WindowComponents"
 )
 
 func main() {
@@ -32,16 +34,25 @@ func main() {
 	setsInput.Resize(fyne.NewSize(100, 100))
 	setsContainer := container.NewHBox(amountOfSetsLabel, setsInput)
 
-	// Timer container
-	amountOfWorkTime := canvas.NewText("How long would you like to work?", color.White)
+	// Work Timer container
+	amountOfWorkTimelabel := canvas.NewText("How long would you like to work?", color.White)
 	workTimeInput := widget.NewEntry()
 	workTimeInput.SetPlaceHolder("00")
 	workTimeInput.Resize(fyne.NewSize(100, 100))
-	workTimeContainer := container.NewHBox(amountOfWorkTime, workTimeInput)
+	workTimeContainer := container.NewHBox(amountOfWorkTimelabel, workTimeInput)
+
+	//Break Timer Container
+	amountOfBreakTimeLabel := canvas.NewText("How long would you like to take breaks?", color.White)
+	breakTimeInput := widget.NewEntry()
+	breakTimeInput.SetPlaceHolder("00")
+	breakTimeContainer := container.NewHBox(amountOfBreakTimeLabel, breakTimeInput)
+
+	// Set component entry values
+	
 
 	hBox := container.New(layout.NewHBoxLayout(), layout.NewSpacer())
 	vBox := container.New(layout.NewVBoxLayout(), title, hBox, widget.NewSeparator(), setsContainer,
-		workTimeContainer)
+		workTimeContainer, breakTimeContainer )
 
 	window.SetContent(vBox)
 	window.ShowAndRun()

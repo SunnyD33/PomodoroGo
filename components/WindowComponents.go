@@ -1,5 +1,8 @@
 package windowComponents
 
-var sets int
-var workTime int
-var breakTime int
+type components struct {
+	Sets       int
+	WorkTime   int
+	BreakTime  int
+}
+
